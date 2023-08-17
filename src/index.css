@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+::placeholder {
+  color: #9B9B9B !important;
+  font-size: 20px;
+  font-weight: medium;
+  opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+ color: #9B9B9B !important;
+ font-size: 20px;
+ font-weight: medium;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+ color: #9B9B9B !important;
+ font-size: 20px;
+ font-weight: medium;
+}
