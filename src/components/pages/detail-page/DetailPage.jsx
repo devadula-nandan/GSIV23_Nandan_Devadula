@@ -33,11 +33,11 @@ function DetailPage() {
       <h6 className="mb-2 line-clamp-2">
         Cast: {movieDetails?.cast?.map((item, index) => {
           return item.known_for_department === "Acting" ? (
-            <>
-              <a className="text-gray-400 hover:text-gray-700 transition-all" key={index} href={`https://image.tmdb.org/t/p/w300${item.profile_path}`}>
+            <span key={index}>
+              <a className="text-gray-400 hover:text-gray-700 transition-all" href={`https://image.tmdb.org/t/p/w300${item.profile_path}`}>
                 {item.name}
               </a>,&nbsp;
-            </>
+            </span>
           ) : null;
         })}
       </h6>
@@ -60,7 +60,7 @@ function DetailPage() {
         </div>
         <div className="col-span-10">
           <div className="flex items-center gap-2 mb-3">
-            <h2 className="card-title text-base">{movieDetails?.title}</h2>
+            <h1 className="card-title text-base">{movieDetails?.title}</h1>
             {renderRating()}
           </div>
           <div className="mb-2 flex gap-2 items-center text-gray-700 font-normal">

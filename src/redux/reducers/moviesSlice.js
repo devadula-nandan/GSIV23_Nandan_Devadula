@@ -18,7 +18,20 @@ export const getAllMovies = createAsyncThunk(
         }
     }
 );
-
+export const searchMovies = createAsyncThunk(
+    'movies/searchMovies',
+    async ({ query, page }, thunkAPI) => {
+        try {
+            const { results, total_pages } = await apiRequest("get", `/3/search/movie?query=${query}&page=${page}`);
+            return {
+                results,
+                total_pages
+            };
+        } catch (error) {
+            return thunkAPI.rejectWithValue(error.response.data);
+        }
+    }
+);
 export const getMovieDetails = createAsyncThunk(
     'movies/details',
     async (id, thunkAPI) => {
@@ -53,6 +66,7 @@ const moviesSlice = createSlice({
             state.currentPage = action.payload;
         },
         setSearchQuery: (state, action) => {
+            console.log(action.payload);
             state.searchQuery = action.payload;
             state.currentPage = 1;
         },
@@ -85,6 +99,19 @@ const moviesSlice = createSlice({
             .addCase(getMovieDetails.rejected, (state, action) => {
                 state.isLoading = false;
                 state.error = action.payload;
+            })
+            .addCase(searchMovies.pending, (state) => {
+                state.isLoading = true;
+                state.error = null;
+            })
+            .addCase(searchMovies.fulfilled, (state, action) => {
+                state.isLoading = false;
+                state.moviesList = action.payload.results;
+                state.totalPages = action.payload.total_pages;
+            })
+            .addCase(searchMovies.rejected, (state, action) => {
+                state.isLoading = false;
+                state.error = action.payload;
             });
     },
 });
@@ -93,3 +120,4 @@ export const { setCurrentPage, setSearchQuery } = moviesSlice.actions;
 export default moviesSlice.reducer;
 
 export const selectMovies = (state) => state.movies;
+export const selectSearch = (state) => state.movies.searchQuery;

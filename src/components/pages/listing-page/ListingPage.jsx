@@ -1,13 +1,14 @@
 import React, { useEffect } from 'react';
 import MovieCard from './MovieCard';
 import { useSelector } from 'react-redux';
-import { selectMovies, getAllMovies, setCurrentPage } from '../../../redux/reducers/moviesSlice';
+import { selectMovies, getAllMovies, setCurrentPage, selectSearch, searchMovies } from '../../../redux/reducers/moviesSlice';
 import PageLoader from '../../layout/PageLoader';
 import { useDispatch } from 'react-redux';
 
 function ListingPage() {
     const dispatch = useDispatch();
     const movies = useSelector(selectMovies);
+    const searchQuery = useSelector(selectSearch);
 
     const renderPagination = () => {
         const totalPages = movies.totalPages;
@@ -52,7 +53,12 @@ function ListingPage() {
     };
 
     const handlePageClick = (p) => {
-        dispatch(getAllMovies(p));
+        if (searchQuery) {
+            dispatch(searchMovies({ query:searchQuery, page: p }));
+        } else {
+            dispatch(getAllMovies(p));
+        }
+
         dispatch(setCurrentPage(p));
     };
 

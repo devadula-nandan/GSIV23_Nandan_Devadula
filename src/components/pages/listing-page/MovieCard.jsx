@@ -4,6 +4,18 @@ import { useNavigate } from 'react-router-dom'
 function MovieCard({ movie }) {
     // console.log(movie);
     const navigate = useNavigate()
+    const renderRating = () => {
+        const voteAverage = Math.round(movie?.vote_average * 10) / 10;
+        if (voteAverage !== 0 && voteAverage !== undefined) {
+          return (
+            <div className="flex items-center gap-1" title={`${movie?.vote_count} ratings`}>
+              <div className="bg-orange-500 mask mask-star-2 h-4 w-4"></div>
+              <p className="contents text-sm font-medium text-gray-500">{voteAverage}/10</p>
+            </div>
+          );
+        }
+        return null;
+      };
     return (
         <div onClick={() => { navigate(`/detail/${movie?.id}`) }} className=" cursor-pointer card rounded-lg w-full bg-base-100 shadow-md hover:shadow-lg hover:scale-[1.004] transition-all">
             <figure>
@@ -16,8 +28,7 @@ function MovieCard({ movie }) {
                     </h2>
                     {movie?.vote_average !== 0 &&
                         <div className="flex items-center gap-1" title={movie?.vote_count + " ratings"}>
-                            <div className="bg-orange-500 mask mask-star-2 h-4 w-4"></div>
-                            <p className=' contents text-sm font-medium text-gray-500'>{movie?.vote_average + "/10"}</p>
+                            <p className=' contents text-sm font-medium text-gray-500'>{renderRating()}</p>
                         </div>
                     }
                 </div>
