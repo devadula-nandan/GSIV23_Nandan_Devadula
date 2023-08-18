@@ -22,13 +22,13 @@ function MovieCard({ movie }) {
     };
 
     return (
-        <div
+        <div data-testid="movie-card"
             onClick={handleCardClick}
-            className="cursor-pointer card rounded-lg w-full bg-base-100 shadow-md hover:shadow-lg hover:scale-[1.004] transition-all"
+            className="cursor-pointer card rounded-lg w-full bg-base-100 shadow-md hover:shadow-lg group transition-all"
         >
             <figure>
                 <img
-                    className="w-full poster-img"
+                    className="w-full poster-img group-hover:scale-105 transition-all"
                     src={
                         movie?.poster_path
                             ? `https://image.tmdb.org/t/p/w300${movie?.poster_path}`

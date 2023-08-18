@@ -5,7 +5,7 @@ export const getAllMovies = createAsyncThunk(
   'movies/allMovies',
   async (p, thunkAPI) => {
     try {
-      const response = await apiRequest('get', `/3/movie/upcoming?page=${p}`);
+      const response = await apiRequest('get', `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=${p}&sort_by=primary_release_date.desc`);
       const { page, results, total_pages, total_results } = response;
       return {
         page,

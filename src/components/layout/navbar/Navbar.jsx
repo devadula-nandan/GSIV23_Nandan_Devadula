@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectSearch, setSearchQuery, searchMovies, getAllMovies } from '../../redux/reducers/moviesSlice';
+import { selectSearch, setSearchQuery, searchMovies, getAllMovies } from '../../../redux/reducers/moviesSlice';
 
 function Navbar() {
     const navigate = useNavigate();
@@ -31,7 +31,7 @@ function Navbar() {
     const isDetailPage = ["detail"].includes(location.pathname.split("/")[1]);
 
     return (
-        <div className='bg-white shadow-md z-50 sticky top-0'>
+        <nav className='bg-white shadow-md z-50 sticky top-0' data-testid='navbar'>
             <div className="navbar min-h-0 p-3 gap-2 container mx-auto">
                 <div className="flex-1 relative">
                     {isListingPage && (
@@ -53,14 +53,14 @@ function Navbar() {
                     )}
                 </div>
                 <div className="flex-none gap-2">
-                    <button onClick={() => { navigate("/") }} className="btn btn-sm h-[40px] w-[40px] btn-circle btn-ghost">
+                    <button onClick={() => { navigate("/") }} className="btn btn-sm h-[40px] w-[40px] btn-circle btn-ghost" data-testid='home-button'>
                         <svg className='m-auto' width="24" height="24" viewBox="0 0 48 48" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                             <path d="M20 40V28H28V40H38V24H44L24 6L4 24H10V40H20Z" fill="currentColor" />
                         </svg>
                     </button>
                 </div>
             </div>
-        </div>
+        </nav>
     );
 }
 

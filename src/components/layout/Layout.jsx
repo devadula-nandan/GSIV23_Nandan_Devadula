@@ -1,5 +1,5 @@
 import React from 'react';
-import Navbar from './Navbar';
+import Navbar from './navbar/Navbar';
 
 // This is the Layout Wrapper component containing the Navbar on top
 function Layout({ children }) {

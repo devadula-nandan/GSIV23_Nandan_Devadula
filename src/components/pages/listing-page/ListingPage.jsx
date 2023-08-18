@@ -8,7 +8,6 @@ function ListingPage() {
     const dispatch = useDispatch();
     const movies = useSelector(selectMovies);
     const searchQuery = useSelector(selectSearch);
-
     const renderPagination = () => {
         const totalPages = movies.totalPages;
         const currentPage = movies.currentPage;
@@ -26,7 +25,7 @@ function ListingPage() {
                 pages.push(
                     <button
                         key={i}
-                        className={`join-item btn-sm btn ${currentPage === i ? 'btn-neutral' : 'btn-light'}`}
+                        className={`join-item btn-sm btn ${currentPage === i ? 'btn-neutral bg-[#212937]' : 'btn-light'}`}
                         onClick={() => handlePageClick(i)}
                     >
                         {i}
@@ -63,14 +62,14 @@ function ListingPage() {
     return (
         <>
             {movies?.isLoading && <PageLoader />}
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 mb-8">
+            <div data-testid='movies-list' className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 mb-8">
                 {movies?.moviesList?.map((movie) => (
                     <MovieCard key={movie.id} movie={movie} />
                 ))}
             </div>
-            <div className="flex items-center justify-center md:justify-between border-t border-gray-200 bg-white py-3">
+            <div data-testid='pagination' className="flex items-center justify-center md:justify-between border-t border-gray-200 bg-white py-3">
                 <div className="join">
-                    {renderPagination()}
+                    {!movies?.isLoading && renderPagination()}
                 </div>
             </div>
         </>

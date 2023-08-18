@@ -1,70 +1,86 @@
-# Getting Started with Create React App
+# Movie App Readme
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Introduction
 
-## Available Scripts
+Welcome to the Movie App README. This guide provides instructions on running and using the Movie App, a React-based application designed for exploring upcoming movies, searching for specific titles, and accessing detailed movie information.
 
-In the project directory, you can run:
+## Features
 
-### `npm start`
+The Movie App offers the following features:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+1. **List Page**
+   - Displays upcoming movies in movie cards, sorted by popularity. (Consider changing "primary_release_date" to "popularity" on line 8 in moviesSlice.js for better UI evaluation)
+   - Each movie card includes media (picture), title, rating (average vote), and a truncated description with ellipsis.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+2. **Pagination**
+   - Responsive pagination enables easy navigation through different result lists, including search results.
 
-### `npm test`
+3. **Search**
+   - Users can search for movies using the integrated search API.
+   - Search results seamlessly integrate with the List page.
+   - Input debounce optimizes API calls for better performance.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+4. **Details Page**
+   - Clicking on a movie card navigates to the Details page.
+   - Comprehensive movie information is displayed, including title, rating, year of release, length, director, cast, and description.
 
-### `npm run build`
+5. **Responsive Design**
+   - The UI is built with the Tailwind CSS framework, enhancing styling with minimal CSS code, along with the DaisyUI plugin.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+6. **State Management**
+   - Utilizes Redux for effective state management and data flow, using Redux Thunk for asynchronous requests.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+7. **Routing**
+   - Implements React Router for seamless navigation between routes and pages.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Getting Started
 
-### `npm run eject`
+Follow these steps to run the Movie App:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+1. Clone the repository: `git clone <repository-url>`
+2. Navigate to the project directory: `cd <project-directory>`
+3. Install dependencies: `npm install`
+4. Create a `.env` file in the root directory.
+5. Add the following environment variables to the `.env` file:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```REACT_APP_API_URL="https://api.themoviedb.org"``` \
+```REACT_APP_API_BEARER=<your-api-token>```\
+   
+6. Save the `.env` file.
+7. Run the development server: `npm start`
+8. Access the app in your browser: [http://localhost:3000](http://localhost:3000)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Usage
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+1. **List Page**
+   - The List page displays upcoming movies in cards.
+   - Use pagination to load more movies if there are more results.
+   - Utilize the search bar to find movies, and clear the input to return to the default movie listing.
 
-## Learn More
+2. **Details Page**
+   - Click a movie card to navigate to the Details page.
+   - Detailed movie information is presented here.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+3. **Navigation**
+   - Use the browser's back button or the home button on the Details page to navigate back to the List page.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Testing
 
-### Code Splitting
+Comprehensive unit tests and DOM tests ensure functionality and quality. Jest and React Testing Library are used for testing.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+To run tests: `npm test`
 
-### Analyzing the Bundle Size
+## Optional Enhancements
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+For further enhancement:
 
-### Making a Progressive Web App
+1. Increase unit test coverage for components, reducers, and actions.
+2. Improve accessibility with ARIA attributes and enhanced keyboard navigation.
+3. Implement code splitting for better initial page load performance.
+4. Convert the app to a Progressive Web App (PWA) to provide offline capabilities.
+5. Consider Server-Side Rendering (SSR) using libraries like Remix.js for SEO and performance.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## Feedback
 
-### Advanced Configuration
+Consider scheduling the task over a weekend to accommodate those with daily work commitments.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
