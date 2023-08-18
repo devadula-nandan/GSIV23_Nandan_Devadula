@@ -51,8 +51,8 @@ function DetailPage() {
         <div className="col-span-2">
           <figure>
             <img
-              className="w-full min-w-[200px]"
-              src={movieDetails?.poster_path ? `https://image.tmdb.org/t/p/w300${movieDetails?.poster_path}` : "https://via.placeholder.com/400x600"}
+              className="w-full min-w-[280px]"
+              src={(movieDetails?.poster_path && !movies?.isLoading) ? `https://image.tmdb.org/t/p/w300${movieDetails?.poster_path}` : "https://via.placeholder.com/300x420"}
               alt={`${movieDetails?.title} (${movieDetails?.release_date})`}
               title={`${movieDetails?.title} (${movieDetails?.release_date})`}
             />
@@ -74,9 +74,7 @@ function DetailPage() {
           <h6>Description: {movieDetails?.overview}</h6>
         </div>
       </div>
-
     </>
-
   );
 }
 

@@ -7,17 +7,20 @@ const axiosInstance = axios.create({
     },
 });
 
-axiosInstance.interceptors.request.use(config => {
-    const bearerToken = process.env.REACT_APP_API_BEARER;
-    if (bearerToken) {
-        config.headers.Authorization = `Bearer ${bearerToken}`;
+axiosInstance.interceptors.request.use(
+    (config) => {
+        const bearerToken = process.env.REACT_APP_API_BEARER;
+        if (bearerToken) {
+            config.headers.Authorization = `Bearer ${bearerToken}`;
+        }
+        return config;
+    },
+    (error) => {
+        return Promise.reject(error);
     }
-    return config;
-}, error => {
-    return Promise.reject(error);
-});
+);
 
-export const apiRequest = async (method, endpoint, data = null) => {
+const apiRequest = async (method, endpoint, data = null) => {
     const config = {
         method,
         url: endpoint,
@@ -31,3 +34,5 @@ export const apiRequest = async (method, endpoint, data = null) => {
         throw error;
     }
 };
+
+export default apiRequest;

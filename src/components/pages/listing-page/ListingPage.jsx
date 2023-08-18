@@ -1,4 +1,3 @@
-import React, { useEffect } from 'react';
 import MovieCard from './MovieCard';
 import { useSelector } from 'react-redux';
 import { selectMovies, getAllMovies, setCurrentPage, selectSearch, searchMovies } from '../../../redux/reducers/moviesSlice';
@@ -40,7 +39,7 @@ function ListingPage() {
                 pages.push(
                     <button
                         key={i}
-                        className="join-item btn-sm btn btn-light btn-disabled"
+                        className="join-item w-4 btn-sm btn btn-light btn-disabled"
                         disabled
                     >
                         ...
@@ -48,13 +47,12 @@ function ListingPage() {
                 );
             }
         }
-
         return pages;
     };
 
     const handlePageClick = (p) => {
         if (searchQuery) {
-            dispatch(searchMovies({ query:searchQuery, page: p }));
+            dispatch(searchMovies({ query: searchQuery, page: p }));
         } else {
             dispatch(getAllMovies(p));
         }
@@ -70,7 +68,7 @@ function ListingPage() {
                     <MovieCard key={movie.id} movie={movie} />
                 ))}
             </div>
-            <div className="flex items-center justify-between border-t border-gray-200 bg-white py-3">
+            <div className="flex items-center justify-center md:justify-between border-t border-gray-200 bg-white py-3">
                 <div className="join">
                     {renderPagination()}
                 </div>
