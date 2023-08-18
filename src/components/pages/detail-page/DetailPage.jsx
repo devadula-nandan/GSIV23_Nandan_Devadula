@@ -11,6 +11,7 @@ function DetailPage() {
 
   useEffect(() => {
     dispatch(getMovieDetails(id));
+    window.scrollTo(0, 0);
   }, [dispatch, id]);
 
   const movieDetails = movies.movieDetails;
