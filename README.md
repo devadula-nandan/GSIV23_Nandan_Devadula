@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Welcome to the Movie App README. This guide provides instructions on running and using the Movie App, a React-based application designed for exploring upcoming movies, searching for specific titles, and accessing detailed movie information.
+Welcome to the Movie App README. This guide provides instructions on running and using the Movie App, a React-based application designed for exploring upcoming movies, searching for specific titles, and accessing detailed movie information. This is a task is a part of GSynergy Hiring process.
 
 ## Features
 
